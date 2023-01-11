@@ -1,0 +1,35 @@
+.video {
+    width: auto;
+
+    background-color: #292a38;
+}
+.title_\# {
+    color: blue;
+    font-size: 0.9em;
+}
+.title_ {
+    font-size: 1.4em;
+}
+.view {
+    color: gray;
+    font-size: 0.8em;
+}
+.user_icon {
+    height: 32px;
+}
+#user_img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: black;
+    float: left;
+}
+.user_name {
+    padding-left: 6px;
+    padding-top: 4px;
+    float: left;
+}
+.subscribe {
+    padding-top: 4px;
+    float: right;
+}
