@@ -39,3 +39,8 @@ body {
     padding-top: 4px;
     float: right;
 }
+.playing_bar {
+    width: auto;
+    height: 1px;
+    background-color: white;
+}
