@@ -12,12 +12,18 @@
 <script>
     $.ajax({
         method: "GET",
-        url: "https://pokeapi.co/api/v2/pokemon/35/"
+        url: "https://pokeapi.co/api/v2/pokemon/90/"
     })
         .done(function (msg) {
             console.log(msg);
-            $("p").append("<strong>" + msg.name + "</strong><br>");
-            $("p").append("<strong>" + msg.types[0].type.name + "</strong>");
+            const types_maxsize = Object.keys(msg.types).length;
+            console.log(types_maxsize);
+            $("p").append("<strong>name: " + msg.name + "</strong><br>");
+            $("p").append("<strong>types: ");
+            var type_size;
+            for (type_size = 0; type_size < types_maxsize; type_size++) {
+              $("p").append("<strong>" + msg.types[type_size].type.name + " </strong>");
+            }
         });
 </script>
 </body>
