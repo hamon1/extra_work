@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pokemon</title>
+</head>
+<body>
+<h1>POKEMON</h1>
+<p></p>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+<script>
+    $.ajax({
+        method: "GET",
+        url: "https://pokeapi.co/api/v2/pokemon/35/"
+    })
+        .done(function (msg) {
+            console.log(msg);
+            $("p").append("<strong>" + msg.name + "</strong><br>");
+            $("p").append("<strong>" + msg.types[0].type.name + "</strong>");
+        });
+</script>
+</body>
+</html>
