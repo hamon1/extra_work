@@ -6,25 +6,35 @@
 </head>
 <body>
 <h1>POKEMON</h1>
+<input type="text" id="input">
+<button onclick="saveInput()">입력</button>
 <p></p>
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
 <script>
-    $.ajax({
-        method: "GET",
-        url: "https://pokeapi.co/api/v2/pokemon/90/"
-    })
-        .done(function (msg) {
-            console.log(msg);
-            const types_maxsize = Object.keys(msg.types).length;
-            console.log(types_maxsize);
-            $("p").append("<strong>name: " + msg.name + "</strong><br>");
-            $("p").append("<strong>types: ");
-            var type_size;
-            for (type_size = 0; type_size < types_maxsize; type_size++) {
-              $("p").append("<strong>" + msg.types[type_size].type.name + " </strong>");
-            }
-        });
+    var input = 1;
+    function saveInput() {
+        $("p *").remove();
+        input = document.getElementById("input").value;
+        $.ajax({
+            method: "GET",
+            url: "https://pokeapi.co/api/v2/pokemon/" + input,
+            data: { name:input }
+        })
+            .done(function (msg) {
+                console.log(msg);
+                const types_maxsize = Object.keys(msg.types).length;
+                console.log(types_maxsize);
+                $("p").append("<strong>name: " + msg.name + "</strong><br>");
+                $("p").append("<strong>types: ");
+                var type_size;
+                for (type_size = 0; type_size < types_maxsize; type_size++) {
+                    $("p").append("<strong>" + msg.types[type_size].type.name + " </strong>");
+                }
+                $("p").append("<br>");
+            });
+    }
+
 </script>
 </body>
 </html>
