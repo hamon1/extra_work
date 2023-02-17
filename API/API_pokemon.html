@@ -19,7 +19,6 @@
         $.ajax({
             method: "GET",
             url: "https://pokeapi.co/api/v2/pokemon/" + input,
-            data: { name:input }
         })
             .done(function (msg) {
                 console.log(msg);
@@ -32,6 +31,32 @@
                     $("p").append("<strong>" + msg.types[type_size].type.name + " </strong>");
                 }
                 $("p").append("<br>");
+            });
+        $.ajax({
+            method: "GET",
+            url: "https://pokeapi.co/api/v2/pokemon-species/" + input,
+        })
+            .done(function (msg) {
+                console.log(msg);
+                $.ajax({
+                    method: "GET",
+                    url: msg.evolution_chain.url
+                })
+                    .done(function (msg) {
+                        console.log(msg);
+                        $("p").append("<strong>" + msg.chain.species.name + "</strong>");
+                        var evolve = msg.chain.evolves_to;
+                        while(true) {
+                            if(Object.keys(evolve).length == 1) {
+                                $("p").append("  <strong>" + evolve[0].species.name + "</strong>");
+                                evolve = evolve[0].evolves_to;
+                            }
+                            else {
+                                break;
+                            }
+                        }
+                    });
+
             });
     }
 
